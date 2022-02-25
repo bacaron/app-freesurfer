@@ -3,8 +3,10 @@
 set -e
 set -x
 
-t1=`jq -r .t1 config.json`
+# t1=`jq -r .t1 config.json`
+t1=($(jq -r '.t1' config.json  | tr -d '[]," '))
 t2=`jq -r .t2 config.json`
+
 hippocampal=`jq -r .hippocampal config.json`
 thalamicnuclei=`jq -r .thalamicnuclei config.json`
 hires=`jq -r .hires config.json`
@@ -16,9 +18,23 @@ jq -r '.expert | select(.!=null)' config.json > expert.opts
 export OMP_NUM_THREADS=8
 export SUBJECTS_DIR=`pwd`
 
-cmd="-i $t1 -subject output -all -parallel -openmp $OMP_NUM_THREADS"
+# this new section will grab multiple t1 inputs
+cmd=""
+
+if [[ ${#t1[*]} == 1 ]];
+then
+  cmd="-i $t1"
+else
+  for i in ${t1[*]}
+  do
+    cmd="$cmd -i ${i}"
+  done
+fi
+
+cmd="$cmd -subject output -all -parallel -openmp $OMP_NUM_THREADS"
+
 if [ -f $t2 ]; then
-    cmd="$cmd -T2 $t2 -T2pial"
+  cmd="$cmd -T2 $t2 -T2pial"
 fi
 
 if [ $hires == "true" ]; then
@@ -89,10 +105,9 @@ cat << EOF > product.json
     "datatype_tags": [$datatype_tags_str],
     "brainlife": [
         {
-            "type": "image/jpg", 
+            "type": "image/jpg",
             "name": "qatools",
             "base64": "$(base64 -w 0 qa/screenshots/output/output.jpg)"
         }
-    ]  
+    ]
 }
-
