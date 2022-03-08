@@ -4,6 +4,7 @@ set -e
 set -x
 
 # t1=`jq -r .t1 config.json`
+t1_ref=`jq -r '.t1_ref' config.json` # first input t1. used as reference
 t1=($(jq -r '.t1' config.json  | tr -d '[]," '))
 t2=`jq -r .t2 config.json`
 
@@ -18,17 +19,11 @@ jq -r '.expert | select(.!=null)' config.json > expert.opts
 export OMP_NUM_THREADS=8
 export SUBJECTS_DIR=`pwd`
 
-
 # this new section will add multiple t1 inputs to the recon-all command if present
-cmd=""
+cmd="-i $t1_ref"
+
 if [[ ${#t1[*]} == 1 ]]; then
-
-# this new section will grab multiple t1 inputs
-cmd=""
-
-if [[ ${#t1[*]} == 1 ]];
-then
-  cmd="-i $t1"
+  cmd="$cmd -i $t1"
 else
   for i in ${t1[*]}
   do
