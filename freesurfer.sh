@@ -6,6 +6,7 @@ set -x
 # t1=`jq -r .t1 config.json`
 t1=($(jq -r '.t1' config.json  | tr -d '[]," '))
 t2=`jq -r .t2 config.json`
+
 hippocampal=`jq -r .hippocampal config.json`
 thalamicnuclei=`jq -r .thalamicnuclei config.json`
 hires=`jq -r .hires config.json`
@@ -17,9 +18,16 @@ jq -r '.expert | select(.!=null)' config.json > expert.opts
 export OMP_NUM_THREADS=8
 export SUBJECTS_DIR=`pwd`
 
+
 # this new section will add multiple t1 inputs to the recon-all command if present
 cmd=""
 if [[ ${#t1[*]} == 1 ]]; then
+
+# this new section will grab multiple t1 inputs
+cmd=""
+
+if [[ ${#t1[*]} == 1 ]];
+then
   cmd="-i $t1"
 else
   for i in ${t1[*]}
@@ -31,7 +39,7 @@ fi
 cmd="$cmd -subject output -all -parallel -openmp $OMP_NUM_THREADS"
 
 if [ -f $t2 ]; then
-    cmd="$cmd -T2 $t2 -T2pial"
+  cmd="$cmd -T2 $t2 -T2pial"
 fi
 
 if [ $hires == "true" ]; then
