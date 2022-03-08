@@ -18,6 +18,11 @@ jq -r '.expert | select(.!=null)' config.json > expert.opts
 export OMP_NUM_THREADS=8
 export SUBJECTS_DIR=`pwd`
 
+
+# this new section will add multiple t1 inputs to the recon-all command if present
+cmd=""
+if [[ ${#t1[*]} == 1 ]]; then
+
 # this new section will grab multiple t1 inputs
 cmd=""
 
