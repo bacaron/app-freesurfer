@@ -10,6 +10,7 @@ This is a Brainlife wrapper for [Freesurfer](https://surfer.nmr.mgh.harvard.edu/
 ### Authors
 - Franco Pestilli (franpest@indiana.edu)
 - Lindsey Kitchell (kitchell@indiana.edu)
+- Brad Caron (bacaron@utexas.edu)
 
 ### Contributors
 - Soichi Hayashi (hayashis@iu.edu)
@@ -35,7 +36,11 @@ You can submit this App online at [https://doi.org/10.25663/bl.app.0](https://do
 
 ```json
 {
-    "t1": "/input/t1/t1.nii.gz"
+    "t1": [
+        "/input/t1/t1.nii.gz",
+        "/input/t1/t1.nii.gz"
+    ],
+    "t1_ref":   "/input/t1/t1.nii.gz
 }
 ```
 
