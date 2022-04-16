@@ -1,9 +1,9 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
-[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/bl.app.0)
+[![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.1-blue.svg)](https://doi.org/10.25663/brainlife.app.605)
 
 # app-freesurfer
 
-This is a Brainlife wrapper for [Freesurfer](https://surfer.nmr.mgh.harvard.edu/); a popular brain segmentation tool developed by Athinoula A. Martinos Center for Biomedical Imaging at Massachusetts General Hospital. This wrapper executes `recon_all` to generate various data products used by other Brainlife Apps.
+This is a Brainlife wrapper for [Freesurfer](https://surfer.nmr.mgh.harvard.edu/); a popular brain segmentation tool developed by Athinoula A. Martinos Center for Biomedical Imaging at Massachusetts General Hospital. This wrapper executes `recon_all` to generate various data products used by other Brainlife Apps. This app is an update to the Freesurfer app to include multiple T1w inputs.
 
 ![freeview](https://medicine.uiowa.edu/mri/sites/medicine.uiowa.edu.mri/files/brain1.png)
 
@@ -27,7 +27,7 @@ This is a Brainlife wrapper for [Freesurfer](https://surfer.nmr.mgh.harvard.edu/
 
 ### On Brainlife.io
 
-You can submit this App online at [https://doi.org/10.25663/bl.app.0](https://doi.org/10.25663/bl.app.0) via the "Execute" tab.
+You can submit this App online at [https://doi.org/10.25663/brainlife.app.605](https://doi.org/10.25663/brainlife.app.605) via the "Execute" tab.
 
 ### Running Locally (on your machine)
 
