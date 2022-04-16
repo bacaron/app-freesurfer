@@ -40,7 +40,7 @@ You can submit this App online at [https://doi.org/10.25663/bl.app.0](https://do
         "/input/t1/t1.nii.gz",
         "/input/t1/t1.nii.gz"
     ],
-    "t1_ref":   "/input/t1/t1.nii.gz
+    "t1_ref":   "/input/t1/t1.nii.gz"
 }
 ```
 
